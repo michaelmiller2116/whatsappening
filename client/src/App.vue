@@ -5,7 +5,7 @@
         <a class="waves-effect waves-light orange darken-2 btn">Food &amp; Drink</a>
         <a class="waves-effect waves-light green darken-1 btn">Active</a>
       </div>
-    <router-view/>
+    <router-view :eventData="eventArr"/>
   </div>
 </template>
 

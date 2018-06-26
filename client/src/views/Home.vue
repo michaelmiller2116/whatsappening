@@ -31,8 +31,8 @@
   </div>
     <Map />
   </div>
-  <div>
-    <PreviewCards />
+  <div class="cards">
+    <PreviewCards :event="event" :key="event.id" v-for="event in eventData"/>
   </div>
   </div>
 </template>
@@ -47,6 +47,7 @@ export default {
     Map,
     PreviewCards,
   },
+  props: ['eventData'],
   data () {
     return {
       dialog3: false,
@@ -68,5 +69,12 @@ export default {
   flex-direction: column;
   align-items: flex-start ! important;
 }
+
+.cards {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+  }
 </style>
 
