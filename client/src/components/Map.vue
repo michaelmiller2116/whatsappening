@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <h1>Google Maps Image</h1>
-        <img src='../assets/gmaps-static.png'>
+    <div class="center">
+        <img id="static-map" src='../assets/gmaps-static.png'>
     </div>
 </template>
 
@@ -12,4 +11,8 @@
 </script>
 
 <style>
+    #static-map {
+        height: 60%;
+        width: 60%;
+    }
 </style>
