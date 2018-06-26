@@ -2,4 +2,4 @@
 
 * 'npm install'
 * Development: 'npm run serve'
-* Deployment: 'npm run build'
+* Production: 'npm run build'
