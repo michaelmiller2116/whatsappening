@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Header />
     <router-view/>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar';
+import Header from '@/components/Header';
 
 export default {
   components: {
-    Navbar,
+    Header,
   },
 };
 </script>
