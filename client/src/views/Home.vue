@@ -2,8 +2,6 @@
   <div id="main-container">
     <div class="map-container">
       <Map />
-    </div>
-    <div>
       <AddEventForm />
     </div>
     <div class="cards-container">
