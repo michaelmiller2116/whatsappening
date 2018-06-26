@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
 import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 
@@ -19,6 +18,6 @@ export default {
   components: {
     Map,
     PreviewCards,
-  }
+  },
 }
 </script>
