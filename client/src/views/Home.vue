@@ -1,12 +1,12 @@
 <template>
-  <div>
-  <div class="home">
-    
-    <Map />
-  </div>
-  <div class="cards">
-    <PreviewCards :event="event" :key="event.id" v-for="event in eventData"/>
-  </div>
+  <div id="main-container">
+    <div class="map-container">
+      <Map />
+    </div>
+    <div class="cards-container">
+      <h4>Events Near You</h4>
+      <PreviewCards :event="event" :key="event.id" v-for="event in eventData"/>
+    </div>
   </div>
 </template>
 
@@ -30,23 +30,25 @@ export default {
 </script>
 
 <style>
-.image-container {
-  text-align: center;
-  width: 100%;
-}
 
+#main-container {
+  width: 90%;
+  display: flex;
+}
+.map-container {
+
+}
 .card-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start ! important;
 }
 
-.cards {
+.cards-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: space-around;
   flex-wrap: wrap;
-  height: 1000px; 
 }
 </style>
 

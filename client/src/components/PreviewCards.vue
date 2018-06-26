@@ -12,33 +12,33 @@
                 <p>{{event.date}}</p>
                 </div>
                 <div class="card-action">
-                <v-btn color="primary" dark @click.stop="dialog3 = true, getEventById()">Details</v-btn>
+                <v-btn color="primary" dark @click.stop="dialog3 = true, displaySelectedModal()">Details</v-btn>
                 </div>
             </div>
             </div>
         </div>
         <v-layout row justify-center>
             <v-dialog v-model="dialog3" max-width="60%">
-            <v-card>
-                <v-card-title class="card-content">
-                <div class="image-container">
-                    <img class="modal-image" :src="selectedEvent.imageURL">
-                </div>
-                <h1>{{ selectedEvent.title }}</h1>
-                <strong>{{ selectedEvent.date }}</strong>
-                <strong>{{ selectedEvent.location }}</strong>
-                <v-spacer></v-spacer>
-                <p>Here</p>
-                <v-spacer></v-spacer>
-                <v-spacer></v-spacer>
-                <strong>{{ selectedEvent.description }}</strong>
-                <p>Contact Establishment: {{ selectedEvent.email }}</p>
-                <v-spacer></v-spacer>
-                </v-card-title>
-                <v-card-actions>
-                <v-btn color="black" flat @click.stop="dialog3=false">Close</v-btn>
-                </v-card-actions>
-            </v-card>
+                <v-card>
+                    <v-card-title class="card-content">
+                    <div class="image-container">
+                        <img class="modal-image" :src="selectedEvent.imageURL">
+                    </div>
+                    <h1>{{ selectedEvent.title }}</h1>
+                    <strong>{{ selectedEvent.date }}</strong>
+                    <strong>{{ selectedEvent.location }}</strong>
+                    <v-spacer></v-spacer>
+                    <p>Here</p>
+                    <v-spacer></v-spacer>
+                    <v-spacer></v-spacer>
+                    <strong>{{ selectedEvent.description }}</strong>
+                    <p>Contact Establishment: {{ selectedEvent.email }}</p>
+                    <v-spacer></v-spacer>
+                    </v-card-title>
+                    <v-card-actions>
+                    <v-btn color="black" flat @click.stop="dialog3=false">Close</v-btn>
+                    </v-card-actions>
+                </v-card>
             </v-dialog>
         </v-layout>
     </div>
@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import API from '@/API.js';
 
 export default {
     props: ["event"],
@@ -57,7 +56,7 @@ export default {
         }
     },
     methods: {
-        getEventById() {
+        displaySelectedModal() {
             this.selectedEvent = this.event
         }
     },
@@ -71,6 +70,7 @@ export default {
         width: 350px;
         height: 150px;
         margin: 20px;
+        margin-top: 70px;
     }
 
     #preview-card img {
