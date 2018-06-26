@@ -1,28 +1,33 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const cors = require('cors')
 const port = process.env.PORT || 3000
-
-
-// Return welcome test message
-app.get('/', (request, response) => {
-    response.json({message: 'Welcome to WhatsAppening!'})
-})
-
-
-// Error response handlers
-app.use((request, response, next) => {
-    const error = new Error('There is an error in your request')
-    response.status(404)
-    next(error)
-})
-
-app.use((error, request, response, next) => {
-    response.status(response.statusCode || 500)
-    response.json({
-        message: error.message
-    })
-})
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const router = express.Router()
+const cors = require('cors')
+const eventController = require('./controllers/event')
 
 app.use(cors())
+app.use(bodyParser())
+app.use(router)
+
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/whatsappening')
+    .catch(error => { console.log(error.message) })
+
+
+// Endpoint handlers for /events
+router.route('/events')
+    .get(eventController.getEvents)
+    .post(eventController.postEvent)
+
+// Endpoint handlers for /events/:event_id
+router.route('/events/:event_id')
+    .get(eventController.getEvent)
+    .delete(eventController.deleteEvent)
+    .put(eventController.updateEvent)
+
+
 app.listen(port)
+
