@@ -10,11 +10,18 @@
 </template>
 
 <script>
+import API from '@/API.js';
 import Header from '@/components/Header';
 
 export default {
   components: {
     Header,
+  },
+  data: () => ({
+    eventArr: [],
+  }),
+  async mounted () {
+    this.eventArr = await API.getEvents();
   },
 };
 </script>
