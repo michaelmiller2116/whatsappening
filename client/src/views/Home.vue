@@ -1,15 +1,16 @@
 <template>
+  <div>
   <div class="home">
     <div>
     <v-layout row justify-center>
       
       <v-btn color="primary" dark @click.stop="dialog3 = true">Open Dialog 3</v-btn>
       
-      <v-dialog v-model="dialog3" max-width="60vw">
+      <v-dialog v-model="dialog3" max-width="60%">
         <v-card>
           <v-card-title class="card-content">
             <div class="image-container">
-              <img src="http://via.placeholder.com/350x150">
+              <img src="http://via.placeholder.com/500x300">
             </div>
             <h1>Title</h1>
             <strong>Location:</strong>
@@ -30,30 +31,38 @@
   </div>
     <Map />
   </div>
+  <div>
+    <PreviewCards />
+  </div>
+  </div>
 </template>
 
 <script>
 
 import Map from '@/components/Map';
+import PreviewCards from '@/components/PreviewCards';
 
 export default {
   name: 'home',
   components: {
     Map,
+    PreviewCards,
   },
   data () {
       return {
         dialog3: false,
       }
     }
-}
+  }
+
 </script>
 
 <style>
 .image-container {
-display: flex;
+  text-align: center;
+  width: 100%;
 /* justify-content: center; */
-justify-content: center;
+/* justify-content: center; */
 }
 
 .card-content {

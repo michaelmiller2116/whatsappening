@@ -12,7 +12,8 @@
 
 <style>
     #static-map {
-        height: 60%;
-        width: 60%;
+        margin-top: 10px;
+        height: 40%;
+        width: 40%;
     }
 </style>
