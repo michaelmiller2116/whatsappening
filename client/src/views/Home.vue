@@ -1,17 +1,33 @@
 <template>
   <div class="home">
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-      </div>
+    <div>
+    <v-layout row justify-center>
+      
+      <v-btn color="primary" dark @click.stop="dialog3 = true">Open Dialog 3</v-btn>
+      
+      <v-dialog v-model="dialog3" max-width="60vw">
+        <v-card>
+          <v-card-title class="card-content">
+            <div class="image-container">
+              <img src="http://via.placeholder.com/350x150">
+            </div>
+            <h1>Title</h1>
+            <strong>Location:</strong>
+            <v-spacer></v-spacer>
+            <p>Here is the location</p>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <strong>Description:</strong>
+            <v-spacer></v-spacer>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus nulla cum ratione recusandae quae quam laborum molestiae autem fugiat provident totam praesentium dolorum commodi reiciendis possimus distinctio aspernatur deleniti voluptas magni, accusantium sint, dolor maxime sunt animi! Libero, ut eaque. Ex quo aliquid vel. Vero assumenda esse quasi temporibus a eos quos et, eligendi repellendus omnis quae fugiat earum aliquid ea blanditiis quibusdam quidem id sit fugit nulla! Tempora quaerat suscipit alias. Quae non numquam quasi adipisci modi, eaque aliquam deleniti id nobis exercitationem ratione iusto enim tempora corporis veniam, labore laboriosam nemo officiis consequuntur. Eligendi itaque temporibus alias sapiente?</p>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn color="black" flat @click.stop="dialog3=false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-layout>
+  </div>
     <Map />
   </div>
 </template>
@@ -24,7 +40,26 @@ export default {
   name: 'home',
   components: {
     Map,
-    
-  }
+  },
+  data () {
+      return {
+        dialog3: false,
+      }
+    }
 }
 </script>
+
+<style>
+.image-container {
+display: flex;
+/* justify-content: center; */
+justify-content: center;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start ! important;
+}
+</style>
+
