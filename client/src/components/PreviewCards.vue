@@ -1,7 +1,4 @@
 <template>
-    <!-- <div>
-        <h5>{{event.title}}</h5>
-    </div> -->
     <div id="cards">
         <div id="preview-card" class="col s12 m7">
             <div class="card horizontal">
@@ -26,7 +23,7 @@
 <script>
     export default {
         props: ["event"],
-    }
+    };
     
 </script>
 

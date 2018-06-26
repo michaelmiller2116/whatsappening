@@ -60,8 +60,6 @@ export default {
 .image-container {
   text-align: center;
   width: 100%;
-/* justify-content: center; */
-/* justify-content: center; */
 }
 
 .card-content {
