@@ -54,11 +54,13 @@ exports.deleteEvent = (request, response) => {
 }
 
 exports.updateEvent = (request, response) => {
-    Listing.findByIdAndUpdate(request.params.event_id, { title: 'Changed' }, (error, event) => {
-        if (error)
-            return response.send(error)
-        return response.json({ message: 'Event updated!' })
-    })
+    if (checkForAllFields(request) === true) {
+        Listing.findByIdAndUpdate(request.params.event_id, request.body, (error, event) => {
+            if (error)
+                return response.send(error)
+            return response.json({ message: 'Event updated!' })
+        })
+    } else response.send('Not all fields are formatted correctly, please adjust and resubmit')
 }
 
 
