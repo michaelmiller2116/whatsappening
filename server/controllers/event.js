@@ -14,6 +14,8 @@ exports.postEvent = (request, response) => {
     listing.title = request.body.title
     listing.category = request.body.category
     listing.location = request.body.location
+    listing.date = request.body.date
+    listing.time = request.body.time
     listing.description = request.body.description
     listing.imageURL = request.body.imageURL
     listing.email = request.body.email
@@ -21,8 +23,8 @@ exports.postEvent = (request, response) => {
     if (checkForAllFields(request) === true) {
         listing.save(error => {
             if (error)
-                response.send(error)
-            response.json({ message: 'Event added to the listings!' })
+               return response.send(error)
+            return response.json({ message: 'Event added to the listings!' })
         })
     } else response.send('Not all fields are formatted correctly, please adjust and resubmit')
 }
@@ -30,7 +32,7 @@ exports.postEvent = (request, response) => {
 function checkForAllFields(request) {
     let rb = request.body
     if (rb.title === '' || rb.category === '' || rb.location === '' || rb.description === ''
-        || rb.imageURL === '' || rb.email === '') {
+        || rb.imageURL === '' || rb.email === '' || rb.time === '' || rb.date === '') {
             return false
         } else return true
 }
