@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import API from '@/lib/API.js';
+import API from '@/API.js';
 import Header from '@/components/Header';
 
 export default {
