@@ -12,7 +12,7 @@
                 <p>{{event.date}}</p>
                 </div>
                 <div class="card-action">
-                    <v-btn color="primary" dark>Edit</v-btn>
+                    <EditEventForm />
                     <v-btn color="warning" dark @click="deleteEvent(event)">Delete</v-btn>
                 </div>
             </div>
@@ -48,6 +48,8 @@
 
 <script>
 
+import EditEventForm from './EditEventForm'
+
 export default {
     props: ['event', 'deleteEvent'],
     data () {
@@ -56,6 +58,11 @@ export default {
             selectedEvent: Object,
         }
     },
+
+    components: {
+        EditEventForm,
+    },
+
     methods: {
         displaySelectedModal() {
             this.selectedEvent = this.event
