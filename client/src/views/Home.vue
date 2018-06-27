@@ -81,10 +81,12 @@ export default {
 
 .cards-container {
   display: flex;
-  flex-direction: column;
+  height: 90vh;
+  /* flex-direction: column; */
   justify-content: space-around;
   flex-wrap: wrap;
   margin-right: -17vh;
+  overflow: auto;
 }
 </style>
 
