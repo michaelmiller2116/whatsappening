@@ -4,10 +4,13 @@
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title class="white--text headline">What's Appenin'</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn fab dark color="orange darken-3">
-        <v-icon dark>add</v-icon>
-      </v-btn>
-      <!-- <v-tabs
+      <v-tooltip left>
+        <v-btn slot="activator" fab dark color="orange darken-3">
+          <v-icon dark>add</v-icon>
+          <span>Tooltip</span>
+        </v-btn>
+      </v-tooltip>
+      <v-tabs
         slot="extension"
         v-model="model"
         centered
@@ -21,7 +24,7 @@
         >
           Item {{ i }}
         </v-tab>
-      </v-tabs> -->
+      </v-tabs>
     </v-toolbar>
     <!-- <v-tabs-items v-model="model">
       <v-tab-item
