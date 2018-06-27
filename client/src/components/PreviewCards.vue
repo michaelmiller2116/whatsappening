@@ -1,6 +1,6 @@
 <template>
     <div data-app="true">
-        <div :ref="event" id="preview-card" class="col s12 m7">
+        <div @click="dialog3 = true, displaySelectedModal()" :ref="event" id="preview-card" class="col s12 m7">
             <div class="card horizontal">
             <div class="card-image">
                 <img :src="event.imageURL">
@@ -12,7 +12,7 @@
                 <p>{{event.date}}</p>
                 </div>
                 <div class="card-action">
-                    <v-btn color="primary" dark @click="dialog3 = true, displaySelectedModal()">Details</v-btn>
+                    <v-btn color="primary" dark>Edit</v-btn>
                     <v-btn color="warning" dark @click="deleteEvent(event)">Delete</v-btn>
                 </div>
             </div>
@@ -72,6 +72,10 @@ export default {
         height: 150px;
         margin: 20px;
         margin-top: 70px;
+    }
+    #preview-card:hover {
+        transform: scale(1.1);
+        cursor: pointer;
     }
 
     #preview-card img {

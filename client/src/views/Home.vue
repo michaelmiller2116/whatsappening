@@ -4,7 +4,7 @@
       <h4>You are here</h4>
       <!-- <Map /> -->
       <GmapMap
-        :center="{lat:39.7392, lng:-104.9903}"
+        :center="{ lat:39.7392, lng:-104.9903 }"
         :zoom="13"
         map-type-id="terrain"
         style="width: 70vw; height: 75vh"
