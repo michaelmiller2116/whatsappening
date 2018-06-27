@@ -11,7 +11,6 @@
       </v-tooltip>
       <v-tabs
         slot="extension"
-        v-model="model"
         centered
         color="cyan"
         slider-color="yellow"
