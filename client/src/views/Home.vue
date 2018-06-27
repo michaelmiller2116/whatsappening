@@ -72,6 +72,7 @@ export default {
           'content-type': 'application/json',
         },
       })
+      .then(res => res.json())
       .then((res) => API.getEvents())
       .then((res) => {
         if (res.status === 500) {
