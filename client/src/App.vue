@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :eventData="eventArr" :categories="categories" />
     <router-view :eventData="eventArr"/>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
   },
   data: () => ({
     eventArr: [],
+    categories: ['Family Fun', 'Food & Drink', 'Active'],
   }),
   async mounted () {
     this.eventArr = await API.getEvents();
