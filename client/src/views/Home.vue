@@ -8,7 +8,7 @@
         map-type-id="terrain"
         style="width: 500px; height: 300px"
       >
-      <gmap-circle
+      <!-- <gmap-circle
         v-if="displayCircle"
         :bounds="circleBounds" 
         :center="reportedCenter"
@@ -16,7 +16,7 @@
         :options="{editable: true}"
         @radius_changed="updateCircle('radius', $event)"
         @bounds_changed="updateCircle('bounds', $event)">
-      </gmap-circle>
+      </gmap-circle> -->
         <GmapMarker
           :key="index"
           v-for="(m, index) in markers"
