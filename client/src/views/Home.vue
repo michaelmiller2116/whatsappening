@@ -82,7 +82,6 @@ export default {
 .cards-container {
   display: flex;
   height: 90vh;
-  /* flex-direction: column; */
   justify-content: space-around;
   flex-wrap: wrap;
   margin-right: -17vh;
