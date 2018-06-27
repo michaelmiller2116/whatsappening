@@ -73,7 +73,7 @@ export default {
         headers: {
           'content-type': 'application/json',
         },
-      }).then((res) => this.getEvents())
+      }).then(this.getEvents())
     },
     deleteEvent(obj) {
       return fetch((`${API.API_URL}${obj._id}`), {
@@ -82,7 +82,7 @@ export default {
         headers: {
           'content-type': 'application/json',
         },
-      }).then((res) => this.getEvents())
+      }).then(this.getEvents())
     },
   },
 };

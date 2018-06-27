@@ -12,7 +12,7 @@
                 <p>{{event.date}}</p>
                 </div>
                 <div class="card-action">
-                    <EditEventForm />
+                    <EditEventForm :event="event" />
                     <v-btn color="warning" dark @click="deleteEvent(event)">Delete</v-btn>
                 </div>
             </div>
