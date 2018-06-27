@@ -33,7 +33,7 @@
         <h4>Events Near You</h4>
         <AddEventForm :postEvent="postEvent" />
       </div>
-      <PreviewCards :event="event" :key="event.id" v-for="event in eventData"/>
+      <PreviewCards :deleteEvent="deleteEvent" :event="event" :key="event.id" v-for="event in eventData"/>
     </div>
   </div>
 </template>
@@ -67,6 +67,24 @@ export default {
       console.log('calling');
       return fetch((API.API_URL), {
         method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      .then((res) => API.getEvents())
+      .then((res) => {
+        if (res.status === 500) {
+          this.errorMessage = 'Error';
+          throw new Error(this.errorMessage);
+          return false;
+        }
+        return true;
+      })
+    },
+    deleteEvent(obj) {
+      return fetch((`${API.API_URL}/${obj._id}`), {
+        method: 'DELETE',
         body: JSON.stringify(obj),
         headers: {
           'content-type': 'application/json',

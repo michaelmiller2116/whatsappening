@@ -12,7 +12,8 @@
                 <p>{{event.date}}</p>
                 </div>
                 <div class="card-action">
-                <v-btn color="primary" dark @click.stop="dialog3 = true, displaySelectedModal()">Details</v-btn>
+                    <v-btn color="primary" dark @click="dialog3 = true, displaySelectedModal()">Details</v-btn>
+                    <v-btn color="warning" dark @click="deleteEvent(event)">Delete</v-btn>
                 </div>
             </div>
             </div>
@@ -48,7 +49,7 @@
 <script>
 
 export default {
-    props: ["event"],
+    props: ['event', 'deleteEvent'],
     data () {
         return {
             dialog3: false,
@@ -58,7 +59,7 @@ export default {
     methods: {
         displaySelectedModal() {
             this.selectedEvent = this.event
-        }
+        },
     },
 };
     
@@ -76,6 +77,9 @@ export default {
     #preview-card img {
         width: 150px;
         height: 165px;
+    }
+    .card-action {
+        display: flex;
     }
 
     .image-container {
