@@ -7,7 +7,7 @@
         :center="{ lat:39.7392, lng:-104.9903 }"
         :zoom="13"
         map-type-id="roadmap"
-        style="width: 70vw; height: 75vh"
+        style="width: 65vw; height: 75vh"
       >
       <!-- <gmap-circle
         v-if="displayCircle"
@@ -122,6 +122,8 @@ export default {
 
 .cards-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   height: 90vh;
   justify-content: space-around;
   flex-wrap: wrap;
