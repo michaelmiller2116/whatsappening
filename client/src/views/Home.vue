@@ -111,6 +111,9 @@ export default {
   display: flex;
 }
 .map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-left: 3vh;
 }
 
