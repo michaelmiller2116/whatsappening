@@ -11,32 +11,29 @@
                     <v-container grid-list-md>
                         <v-layout wrap>
                         <v-flex xs12>
-                            <v-text-field v-model="body.EventTitle" label="Event Title" required></v-text-field>
+                            <v-text-field v-model="body.title" label="Event Title" required></v-text-field>
                         </v-flex>
                         <v-flex xs12>
-                            <v-text-field v-model="body.Category" label="Category" required></v-text-field>
+                            <v-text-field v-model="body.category" label="Category" required></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md4>
-                            <v-text-field v-model="body.Location" label="Location" required></v-text-field>
+                            <v-text-field v-model="body.location" label="Location" required></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md4>
-                            <v-text-field v-model="body.EventDate" label="Date of Event" required></v-text-field>
+                            <v-text-field v-model="body.date" label="Date of Event" required></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md4>
-                            <v-text-field v-model="body.Time" label="Time" required></v-text-field>
-                        </v-flex>
-                        <v-flex xs12 sm6 md6>
-                            <v-text-field v-model="body.Name" label="Name" required></v-text-field>
+                            <v-text-field v-model="body.time" label="Time" required></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6s md6>
-                            <v-text-field v-model="body.Email" label="Email" required></v-text-field>
+                            <v-text-field v-model="body.email" label="Email" required></v-text-field>
                         </v-flex>
                         </v-layout>
                         <v-flex xs12>
-                            <v-text-field v-model="body.Description" label="Description"></v-text-field>
+                            <v-text-field v-model="body.description" label="Description"></v-text-field>
                         </v-flex>
                         <v-flex xs12>
-                            <v-text-field v-model="body.ImageURL" label="Image URL"></v-text-field>
+                            <v-text-field v-model="body.imageURL" label="Image URL"></v-text-field>
                         </v-flex>
                     </v-container>
                     <small>*indicates required field</small>
@@ -44,7 +41,7 @@
                     <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                    <v-btn color="blue darken-1" flat @click.native="dialog = false" >Create Event</v-btn>
+                    <v-btn @click="postEvent(body)" color="blue darken-1" flat @click.native="dialog = false" >Create Event</v-btn>
                     </v-card-actions>
                 </v-card>
                 </v-dialog>
@@ -57,18 +54,18 @@
 // import API from '../API'
 
     export default {
+        props: ['postEvent'],
         data: () => ({
             dialog: false,
             body: {
-                EventTitle: "",
-                Category: "",
-                EventDate:"",
-                Time: "",
-                Location: "",
-                Name: "",
-                Email: "",
-                Description: "",
-                ImageURL: "",
+                title: "",
+                category: "",
+                date:"",
+                time: "",
+                location: "",
+                email: "",
+                description: "",
+                imageURL: "",
             }
         })
     }

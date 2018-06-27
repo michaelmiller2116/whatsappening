@@ -29,8 +29,10 @@
       </GmapMap>
     </div>
     <div class="cards-container">
-      <h4>Events Near You</h4>
-      <AddEventForm />
+      <div id="event-section">
+        <h4>Events Near You</h4>
+        <AddEventForm :postEvent="postEvent" />
+      </div>
       <PreviewCards :event="event" :key="event.id" v-for="event in eventData"/>
     </div>
   </div>
@@ -40,7 +42,7 @@
 import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 import AddEventForm from '@/components/AddEventForm';
-
+import API from '../API.js';
 
 export default {
   name: 'home',
@@ -59,6 +61,27 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    postEvent(obj) {
+      console.log('calling');
+      return fetch((API.API_URL), {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      .then((res) => API.getEvents())
+      .then((res) => {
+        if (res.status === 500) {
+          this.errorMessage = 'Error';
+          throw new Error(this.errorMessage);
+          return false;
+        }
+        return true;
+      })
+    },
   },
 };
 </script>
