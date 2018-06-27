@@ -1,7 +1,7 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="500px">
-      <v-btn @click="test()" slot="activator" color="primary" dark>Edit</v-btn>
+      <v-btn slot="activator" color="primary" dark>Edit</v-btn>
       <v-card>
         <v-card-title>
           <span class="headline">Edit Event</span>
@@ -65,13 +65,6 @@
         imageURL: "",
       }
     }),
-    
-    methods: {
-      test() {
-            console.log(this.event);
-            
-        }
-    }
   }
 </script>
 
