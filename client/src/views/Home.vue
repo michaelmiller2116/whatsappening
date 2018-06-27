@@ -1,7 +1,31 @@
 <template>
   <div id="main-container">
     <div class="map-container">
-      <Map />
+      <!-- <Map /> -->
+      <GmapMap
+        :center="{lat:39.7392, lng:-104.9903}"
+        :zoom="7"
+        map-type-id="terrain"
+        style="width: 500px; height: 300px"
+      >
+      <gmap-circle
+        v-if="displayCircle"
+        :bounds="circleBounds" 
+        :center="reportedCenter"
+        :radius="100000"
+        :options="{editable: true}"
+        @radius_changed="updateCircle('radius', $event)"
+        @bounds_changed="updateCircle('bounds', $event)">
+      </gmap-circle>
+        <GmapMarker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+          :clickable="true"
+          :draggable="true"
+          @click="center=m.position"
+        />
+      </GmapMap>
     </div>
     <div class="cards-container">
       <h4>Events Near You</h4>
@@ -24,6 +48,11 @@ export default {
   data () {
     return {
       dialog3: false,
+      markers: [
+        {
+          position: { lat: 39.7577, lng: -105.0070},
+        }
+      ]
     }
   },
 };
