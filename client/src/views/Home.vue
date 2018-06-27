@@ -2,10 +2,10 @@
   <div id="main-container">
     <div class="map-container">
       <Map />
-      <AddEventForm />
     </div>
     <div class="cards-container">
       <h4>Events Near You</h4>
+      <AddEventForm />
       <PreviewCards :event="event" :key="event.id" v-for="event in eventData"/>
     </div>
   </div>
@@ -15,6 +15,7 @@
 import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 import AddEventForm from '@/components/AddEventForm';
+
 
 export default {
   name: 'home',
@@ -39,8 +40,9 @@ export default {
   display: flex;
 }
 .map-container {
-
+  margin-left: 3vh;
 }
+
 .card-content {
   display: flex;
   flex-direction: column;
@@ -52,6 +54,7 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-right: -17vh;
 }
 </style>
 

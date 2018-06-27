@@ -11,13 +11,21 @@
 </template>
 
 <script>
-export default {
 
+
+export default {
+  name: 'home',
+    components: {
+    },
 };
 </script>
 
 <style scoped>
   .nav-wrapper {
     padding-left: 10px;
+  }
+  .button-container{
+    display: flex;
+    justify-content: space-around;
   }
 </style>
