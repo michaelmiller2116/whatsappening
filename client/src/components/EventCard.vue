@@ -6,7 +6,7 @@
         <v-card-title primary-title>
           <div>
             <h3 class="headline mb-0">{{ event.title }}</h3>
-            <strong>{{ event.date }}</strong>
+            <strong>{{ event.date.substr(0,10) }}</strong>
             <div>{{ event.location }}</div>
           </div>
         </v-card-title>
