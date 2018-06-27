@@ -75,7 +75,7 @@ export default {
 <style>
 
     #preview-card {
-        width: 350px;
+        width: 500px;
         height: 150px;
         margin: 20px;
         margin-top: 70px;
