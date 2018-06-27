@@ -33,7 +33,7 @@
         <h4>Events Near You</h4>
         <AddEventForm :postEvent="postEvent" />
       </div>
-      <PreviewCards :deleteEvent="deleteEvent" :event="event" :key="event.id" v-for="event in eventData"/>
+      <PreviewCards :deleteEvent="deleteEvent" :event="event" :key="event.id" v-for="event in eventArr"/>
     </div>
   </div>
 </template>
@@ -51,7 +51,7 @@ export default {
     PreviewCards,
     AddEventForm,
   },
-  props: ['eventData'],
+  props: ['getEvents', 'eventArr'],
   data () {
     return {
       dialog3: false,
@@ -62,43 +62,27 @@ export default {
       ]
     }
   },
+  beforeMount() {
+    this.getEvents();
+  },
   methods: {
     postEvent(obj) {
-      console.log('calling');
       return fetch((API.API_URL), {
         method: 'POST',
         body: JSON.stringify(obj),
         headers: {
           'content-type': 'application/json',
         },
-      })
-      .then((res) => API.getEvents())
-      .then((res) => {
-        if (res.status === 500) {
-          this.errorMessage = 'Error';
-          throw new Error(this.errorMessage);
-          return false;
-        }
-        return true;
-      })
+      }).then((res) => this.getEvents())
     },
     deleteEvent(obj) {
-      return fetch((`${API.API_URL}/${obj._id}`), {
+      return fetch((`${API.API_URL}${obj._id}`), {
         method: 'DELETE',
         body: JSON.stringify(obj),
         headers: {
           'content-type': 'application/json',
         },
-      })
-      .then((res) => API.getEvents())
-      .then((res) => {
-        if (res.status === 500) {
-          this.errorMessage = 'Error';
-          throw new Error(this.errorMessage);
-          return false;
-        }
-        return true;
-      })
+      }).then((res) => this.getEvents())
     },
   },
 };

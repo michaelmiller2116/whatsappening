@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view :eventData="eventArr"/>
+    <router-view :getEvents="getEvents" :eventArr="eventArr"/>
   </div>
 </template>
 
@@ -16,8 +16,19 @@ export default {
   data: () => ({
     eventArr: [],
   }),
-  async mounted () {
-    this.eventArr = await API.getEvents();
+  methods: {
+    getEvents() {
+      fetch((API.API_URL), {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      })
+        .then(res => res.json())
+        .then((data) => {
+          this.eventArr = data;
+        });
+    },
   },
 };
 </script>
