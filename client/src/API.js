@@ -5,4 +5,14 @@ export default {
     const res = await fetch(API_URL);
     return res.json();
   },
+
+  // postNewEvent
 };
+
+// postNewEvent(API_URL, {
+//   method: 'POST',
+//   body: JSON.stringify(this.body),
+//   headers: {
+//     'content-type': 'application/json'
+//   }
+// })
