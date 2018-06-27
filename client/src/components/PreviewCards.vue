@@ -1,12 +1,12 @@
 <template>
     <div data-app="true">
-        <div @click="dialog3 = true, displaySelectedModal()" :ref="event" id="preview-card" class="col s12 m7">
+        <div :ref="event" id="preview-card" class="col s12 m7">
             <div class="card horizontal">
             <div class="card-image">
                 <img :src="event.imageURL">
             </div>
             <div class="card-stacked">
-                <div class="card-content">
+                <div class="card-content" @click="dialog3 = true, displaySelectedModal()">
                 <h5 class="header">{{event.title}}</h5>
                 <p>{{event.location}}</p>
                 <p>{{event.date}}</p>
