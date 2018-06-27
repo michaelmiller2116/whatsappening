@@ -5,11 +5,12 @@ import App from './App.vue'
 import router from './router'
 
 import 'vuetify/dist/vuetify.min.css'
+import API from './lib/API.js'
 
 Vue.use(Vuetify)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyAvm0Ldk9fjndmn7oK_qQCRsjxXsEJrBik',
+    key: API.G_KEY,
     libraries: 'places', // This is required if you use the Autocomplete plugin
     // OR: libraries: 'places,drawing'
     // OR: libraries: 'places,drawing,visualization'
