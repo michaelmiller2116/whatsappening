@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div data-app="true">
         <div :ref="event" id="preview-card" class="col s12 m7">
             <div class="card horizontal">
             <div class="card-image">
