@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-toolbar color="cyan" dark tabs>
-      <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title class="white--text headline">What's Appenin'</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-tooltip left>
