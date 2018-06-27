@@ -1,12 +1,13 @@
 <template>
   <div id="main-container">
     <div class="map-container">
+      <h4>You are here</h4>
       <!-- <Map /> -->
       <GmapMap
         :center="{lat:39.7392, lng:-104.9903}"
-        :zoom="7"
+        :zoom="13"
         map-type-id="terrain"
-        style="width: 500px; height: 300px"
+        style="width: 70vw; height: 75vh"
       >
       <!-- <gmap-circle
         v-if="displayCircle"
@@ -80,10 +81,11 @@ export default {
 
 .cards-container {
   display: flex;
-  flex-direction: column;
+  height: 90vh;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-right: -17vh;
+  overflow: auto;
 }
 </style>
 
