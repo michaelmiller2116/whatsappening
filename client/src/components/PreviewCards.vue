@@ -37,7 +37,7 @@
                     <v-spacer></v-spacer>
                     </v-card-title>
                     <v-card-actions>
-                    <v-btn color="black" flat @click.stop="dialog3=false">Close</v-btn>
+                    <v-btn color="black" flat @click="dialog3=false">Close</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -47,11 +47,11 @@
 </template>
 
 <script>
-
+import API from '../API.js';
 import EditEventForm from './EditEventForm'
 
 export default {
-    props: ['event', 'deleteEvent'],
+    props: ['event', 'getEvents'],
     data () {
         return {
             dialog3: false,
@@ -66,6 +66,15 @@ export default {
     methods: {
         displaySelectedModal() {
             this.selectedEvent = this.event
+        },
+        deleteEvent(obj) {
+            return fetch((`${API.API_URL}/${obj._id}`), {
+                method: 'DELETE',
+                body: JSON.stringify(obj),
+                headers: {
+                'content-type': 'application/json',
+                },
+            }).then(this.getEvents())
         },
     },
 };

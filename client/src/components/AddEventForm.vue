@@ -56,11 +56,10 @@
 </template>
 
 <script>
-
-// import API from '../API'
+import API from '../API'
 
     export default {
-        props: ['postEvent'],
+        props: ['getEvents'],
         data: () => ({
             dialog: false,
             body: {
@@ -73,7 +72,30 @@
                 description: "",
                 imageURL: "",
             }
-        })
+        }),
+        methods: {
+            resetBody() {
+                this.body = {
+                    title: "",
+                    category: "",
+                    date:"",
+                    time: "",
+                    location: "",
+                    email: "",
+                    description: "",
+                    imageURL: "",
+                }
+            },
+            postEvent(obj) {
+                return fetch((API.API_URL), {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                'content-type': 'application/json',
+                },
+                }).then(this.resetBody(), this.getEvents())
+            },
+        },
     }
 </script>
 

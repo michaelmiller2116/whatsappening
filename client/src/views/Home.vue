@@ -34,9 +34,9 @@
     <div class="cards-container">
       <div id="event-section">
         <h4>Events Near You</h4>
-        <AddEventForm :postEvent="postEvent" />
+        <AddEventForm :getEvents="getEvents" />
       </div>
-      <PreviewCards :deleteEvent="deleteEvent" :event="event" :key="event.id" v-for="event in eventArr"/>
+      <PreviewCards :getEvents="getEvents" :event="event" :key="event.id" v-for="event in eventArr"/>
     </div>
   </div>
 </template>
@@ -71,24 +71,6 @@ export default {
     this.getEvents();
   },
   methods: {
-    postEvent(obj) {
-      return fetch((API.API_URL), {
-        method: 'POST',
-        body: JSON.stringify(obj),
-        headers: {
-          'content-type': 'application/json',
-        },
-      }).then(this.getEvents())
-    },
-    deleteEvent(obj) {
-      return fetch((`${API.API_URL}/${obj._id}`), {
-        method: 'DELETE',
-        body: JSON.stringify(obj),
-        headers: {
-          'content-type': 'application/json',
-        },
-      }).then(this.getEvents())
-    },
   },
 };
 </script>
