@@ -18,13 +18,13 @@
                         </v-flex>
                         <v-flex xs12 sm6 md4 v-model="body.location">
                             Location
-                            <GmapAutocomplete @place_changed="setPlace">
-                            </GmapAutocomplete>
+                            <!-- <GmapAutocomplete @place_changed="setPlace"> -->
+                            <!-- </GmapAutocomplete> -->
                             <!-- <button @click="usePlace">Add</button> -->
                         </v-flex>
-                        <!-- <v-flex xs12 sm6 md4>
+                        <v-flex xs12 sm6 md4>
                             <v-text-field v-model="body.location" label="Location" required></v-text-field>
-                        </v-flex> -->
+                        </v-flex>
                         <v-flex xs12 sm6 md4>
                             <v-text-field v-model="body.date" label="Date of Event" required></v-text-field>
                         </v-flex>
