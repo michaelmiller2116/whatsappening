@@ -74,7 +74,7 @@
 import API from '../API'
 
     export default {
-        props: ['getEvents'],
+        props: ['getEvents', 'eventArr'],
         data: () => ({
             dialog: false,
             markers: [],
@@ -85,10 +85,9 @@ import API from '../API'
                 date:"",
                 time: "",
                 location: {},
-                email: "",
+                pins: [],
                 description: "",
                 imageURL: "",
-                pins: [],
             }
         }),
         description: 'Autocomplete Example (#164)',
@@ -100,10 +99,9 @@ import API from '../API'
                     date:"",
                     time: "",
                     location: {},
-                    email: "",
+                    pins: [],
                     description: "",
                     imageURL: "",
-                    pins: [],
                 }
             },
             postEvent(obj) {
@@ -122,7 +120,13 @@ import API from '../API'
             setPlace(place) {
                 this.place = place
                 this.body.location = this.place
-                // this.body.pins = this.markers
+                this.markers.push({
+                    position: {
+                        lat: this.place.geometry.location.lat(),
+                        lng: this.place.geometry.location.lng(),
+                    }
+                    })
+                this.body.pins = this.markers
             },
             usePlace(place) {
                 console.log('1');
@@ -136,7 +140,7 @@ import API from '../API'
                     })
                     // this.place = null;
                 }
-                    this.body.pins = markers
+                    // this.body.pins = ['hello']
             },
         },
     }
