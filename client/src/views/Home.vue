@@ -3,12 +3,12 @@
     <div class="map-container">
       <h4>You are here</h4>
       <!-- <Map /> -->
-      <GmapMap
+      <!-- <GmapMap
         :center="{ lat:39.7392, lng:-104.9903 }"
         :zoom="13"
         map-type-id="roadmap"
         style="width: 65vw; height: 75vh"
-      >
+      > -->
       <!-- <gmap-circle
         v-if="displayCircle"
         :bounds="circleBounds" 
@@ -18,7 +18,7 @@
         @radius_changed="updateCircle('radius', $event)"
         @bounds_changed="updateCircle('bounds', $event)">
       </gmap-circle> -->
-        <GmapMarker
+        <!-- <GmapMarker
           :key="index"
           v-for="(m, index) in markers"
           :position="m.position"
@@ -26,8 +26,11 @@
           :draggable="true"
           @click="center=m.position"
         />
-      </GmapMap>
+      </GmapMap> -->
     </div>
+      <div>
+      <LocationAutoComplete />
+      </div>    
     <div class="cards-container">
       <div id="event-section">
         <h4>Events Near You</h4>
@@ -42,6 +45,7 @@
 import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 import AddEventForm from '@/components/AddEventForm';
+import LocationAutoComplete from '@/components/LocationAutoComplete';
 import API from '../API.js';
 
 export default {
@@ -50,6 +54,7 @@ export default {
     Map,
     PreviewCards,
     AddEventForm,
+    LocationAutoComplete,
   },
   props: ['getEvents', 'eventArr'],
   data () {
