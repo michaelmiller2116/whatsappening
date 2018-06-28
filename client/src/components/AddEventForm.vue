@@ -1,7 +1,18 @@
 <template>
     <div class='new-event-form' data-app="true">
-        <GmapMap style="width: 600px; height: 300px;" :zoom="13" :center="{lat:39.7392, lng:-104.9903}">
-                <GmapMarker v-for="(marker, index) in markers"
+        <GmapMap style="width: 600px; height: 300px;" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
+                <!-- <GmapMarker v-for="(event, index) in eventArr"
+                    :key="index"
+                    :position="event.pins[0].position"
+                    /> -->
+                    <!-- v-if="this.place" -->
+                <GmapMarker
+                    v-for="(event, index) in eventArr"
+                    :key="index"
+                    label="★"
+                    :position="event.pins[index].position"
+                    />
+                <!-- <GmapMarker v-for="(marker, index) in markers"
                     :key="index"
                     :position="marker.position"
                     />
@@ -12,7 +23,7 @@
                     lat: this.place.geometry.location.lat(),
                     lng: this.place.geometry.location.lng(),
                     }"
-                    />
+                    /> -->
         </GmapMap>
         <v-layout row justify-left>
             <v-dialog v-model="dialog" persistent max-width="500px" >
