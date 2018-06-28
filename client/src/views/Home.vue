@@ -29,7 +29,7 @@
       </GmapMap> -->
     </div>
       <div>
-      <LocationAutoComplete />
+      <!-- <LocationAutoComplete /> -->
       </div>    
     <div class="cards-container">
       <div id="event-section">
@@ -45,7 +45,7 @@
 import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 import AddEventForm from '@/components/AddEventForm';
-import LocationAutoComplete from '@/components/LocationAutoComplete';
+// import LocationAutoComplete from '@/components/LocationAutoComplete';
 import API from '../API.js';
 
 export default {
@@ -54,7 +54,7 @@ export default {
     Map,
     PreviewCards,
     AddEventForm,
-    LocationAutoComplete,
+    // LocationAutoComplete,
   },
   props: ['getEvents', 'eventArr'],
   data () {

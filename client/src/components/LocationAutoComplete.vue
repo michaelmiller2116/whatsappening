@@ -1,11 +1,11 @@
 <template>
     <div>
-        <!-- <label>
+        <label>
             AutoComplete
             <GmapAutocomplete @place_changed="setPlace">
             </GmapAutocomplete>
             <button @click="usePlace">Add</button>
-        </label> -->
+        </label>
         <br>
         <GmapMap style="width: 600px; height: 300px;" :zoom="13" :center="{lat:39.7392, lng:-104.9903}">
         <GmapMarker v-for="(marker, index) in markers"
@@ -37,20 +37,6 @@ export default {
         setDescription(description) {
         this.description = description;
         },
-        setPlace(place) {
-        this.place = place
-        },
-        usePlace(place) {
-        if (this.place) {
-            this.markers.push({
-            position: {
-                lat: this.place.geometry.location.lat(),
-                lng: this.place.geometry.location.lng(),
-            }
-            })
-            this.place = null;
-        }
-        }
     }
 }
 </script>
