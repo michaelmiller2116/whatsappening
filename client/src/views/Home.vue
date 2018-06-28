@@ -76,7 +76,7 @@ export default {
       }).then(this.getEvents())
     },
     deleteEvent(obj) {
-      return fetch((`${API.API_URL}${obj._id}`), {
+      return fetch((`${API.API_URL}/${obj._id}`), {
         method: 'DELETE',
         body: JSON.stringify(obj),
         headers: {
