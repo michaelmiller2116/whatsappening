@@ -30,11 +30,12 @@
                     <v-flex xs12>
                         <v-text-field v-model="body.category" label="Category" required></v-text-field>
                     </v-flex>
-                    <v-flex xs12 sm6 md4 v-model="place">
+                    <v-flex xs12 sm6 md4 v-model="body.location">
                         Location
-                        <GmapAutocomplete @place_changed="setPlace" @click="usePlace">
+                        <GmapAutocomplete
+                         @place_changed="setPlace" @click="usePlace">
                         </GmapAutocomplete>
-                        <button @click="usePlace">Confirm Location</button>
+                        <!-- <button @click="usePlace, setPlace">Confirm Location</button> -->
                     </v-flex>
                     <!-- <v-flex xs12 sm6 md4>
                         <v-text-field v-model="body.location" label="Location" required></v-text-field>
@@ -61,7 +62,7 @@
                 <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                <v-btn @click="postEvent(body)" color="blue darken-1" flat @click.native="dialog = false" >Create Event</v-btn>
+                <v-btn @click="usePlace, setPlace, postEvent(body)" color="blue darken-1" flat @click.native="dialog = false" >Create Event</v-btn>
                 </v-card-actions>
             </v-card>
             </v-dialog>
@@ -83,10 +84,11 @@ import API from '../API'
                 category: "",
                 date:"",
                 time: "",
-                location: "",
+                location: {},
                 email: "",
                 description: "",
                 imageURL: "",
+                pins: [],
             }
         }),
         description: 'Autocomplete Example (#164)',
@@ -97,13 +99,15 @@ import API from '../API'
                     category: "",
                     date:"",
                     time: "",
-                    location: "",
+                    location: {},
                     email: "",
                     description: "",
                     imageURL: "",
+                    pins: [],
                 }
             },
             postEvent(obj) {
+                console.log(this.body);
                 return fetch((API.API_URL), {
                 method: 'POST',
                 body: JSON.stringify(obj),
@@ -117,8 +121,12 @@ import API from '../API'
             },
             setPlace(place) {
                 this.place = place
+                this.body.location = this.place
+                // this.body.pins = this.markers
             },
             usePlace(place) {
+                console.log('1');
+                
                 if (this.place) {
                     this.markers.push({
                     position: {
@@ -126,9 +134,10 @@ import API from '../API'
                         lng: this.place.geometry.location.lng(),
                     }
                     })
-                    this.place = null;
+                    // this.place = null;
                 }
-            }
+                    this.body.pins = markers
+            },
         },
     }
 </script>

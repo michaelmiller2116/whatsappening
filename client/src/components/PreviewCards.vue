@@ -8,7 +8,7 @@
             <div class="card-stacked">
                 <div class="card-content" @click="dialog3 = true, displaySelectedModal()">
                 <h5 class="header">{{event.title}}</h5>
-                <p>{{event.location}}</p>
+                <!-- <p>{{event.location}}</p> -->
                 <p>{{event.date}}</p>
                 </div>
                 <div class="card-action">
@@ -27,7 +27,7 @@
                     </div>
                     <h1>{{ selectedEvent.title }}</h1>
                     <strong>{{ selectedEvent.date }}</strong>
-                    <strong>{{ selectedEvent.location }}</strong>
+                    <!-- <strong>{{ selectedEvent.location }}</strong> -->
                     <v-spacer></v-spacer>
                     <p>Here</p>
                     <v-spacer></v-spacer>
