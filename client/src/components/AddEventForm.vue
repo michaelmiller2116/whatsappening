@@ -28,9 +28,9 @@
                     <v-flex xs12 sm6 md4>
                         <v-text-field v-model="body.time" label="Time" required></v-text-field>
                     </v-flex>
-                    <!-- <v-flex xs12 sm6s md6>
+                    <v-flex xs12 sm6s md6>
                         <v-text-field v-model="body.email" label="Email" required></v-text-field>
-                    </v-flex> -->
+                    </v-flex>
                     </v-layout>
                     <v-flex xs12>
                         <v-text-field v-model="body.description" label="Description" required></v-text-field>
