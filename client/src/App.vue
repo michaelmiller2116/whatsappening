@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :getEvents="getEvents" :eventArr="eventArr" />
     <router-view :getEvents="getEvents" :eventArr="eventArr"/>
   </div>
 </template>

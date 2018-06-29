@@ -3,22 +3,12 @@
     <div class="nav-wrapper indigo">
       <a href="#" class="brand-logo left">What's Appening</a>
     <div id="button-container" class="right">
-      <a class="waves-effect waves-light orange darken-2 btn">Food &amp; Drink</a>
-      <a class="waves-effect waves-light green darken-1 btn">Active</a>
+      <!-- <a class="waves-effect waves-light orange darken-2 btn">Food &amp; Drink</a>
+      <a class="waves-effect waves-light green darken-1 btn">Active</a> -->
     </div>
     </div>
   </nav>
 </template>
-
-<script>
-
-
-export default {
-  name: 'home',
-    components: {
-    },
-};
-</script>
 
 <style scoped>
   .nav-wrapper {

@@ -7,9 +7,14 @@
             </div>
             <div class="card-stacked">
                 <div class="card-content" @click="dialog3 = true, displaySelectedModal()">
-                <h5 class="header">{{event.title}}</h5>
-                <!-- <p>{{event.location}}</p> -->
-                <p>{{event.date}}</p>
+                <h5 class="header">{{ event.title }}</h5>
+                <p>{{ event.location.name }}</p>
+                <p>{{ event.location.formatted_address }}</p>
+                <p>{{ event.location.formatted_phone_number }}</p>
+                <a 
+                href="https://maps.google.com/?q=1701+Bryant+St,+Denver,+CO+80204,+USA&ftid=0x876c78baa82ea2b5:0xb08dbf533f1158f9">
+                Directions
+                </a>
                 </div>
                 <div class="card-action">
                     <EditEventForm :event="event" />
@@ -27,7 +32,6 @@
                     </div>
                     <h1>{{ selectedEvent.title }}</h1>
                     <strong>{{ selectedEvent.date }}</strong>
-                    <!-- <strong>{{ selectedEvent.location }}</strong> -->
                     <v-spacer></v-spacer>
                     <p>Here</p>
                     <v-spacer></v-spacer>

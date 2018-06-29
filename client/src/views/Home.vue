@@ -1,39 +1,18 @@
 <template>
   <div id="main-container">
     <div class="map-container">
-      <h4>You are here</h4>
-      <!-- <Map /> -->
-      <!-- <GmapMap
-        :center="{ lat:39.7392, lng:-104.9903 }"
-        :zoom="13"
-        map-type-id="roadmap"
-        style="width: 65vw; height: 75vh"
-      > -->
-      <!-- <gmap-circle
-        v-if="displayCircle"
-        :bounds="circleBounds" 
-        :center="reportedCenter"
-        :radius="100000"
-        :options="{editable: true}"
-        @radius_changed="updateCircle('radius', $event)"
-        @bounds_changed="updateCircle('bounds', $event)">
-      </gmap-circle> -->
-        <!-- <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center=m.position"
-        />
-      </GmapMap> -->
+      <h4>Events Near You</h4>
+      <GmapMap style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
+              <GmapMarker v-for="(event, index) in eventArr"
+              :key="index"
+              :position="event.location.geometry.location"
+              />
+      </GmapMap>
     </div>
       <div>
-      <!-- <LocationAutoComplete /> -->
       </div>    
     <div class="cards-container">
       <div id="event-section">
-        <h4>Events Near You</h4>
         <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
       </div>
       <PreviewCards :getEvents="getEvents" :event="event" :key="event.id" v-for="event in eventArr"/>
@@ -45,7 +24,6 @@
 import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 import AddEventForm from '@/components/AddEventForm';
-// import LocationAutoComplete from '@/components/LocationAutoComplete';
 import API from '../API.js';
 
 export default {
@@ -54,17 +32,11 @@ export default {
     Map,
     PreviewCards,
     AddEventForm,
-    // LocationAutoComplete,
   },
   props: ['getEvents', 'eventArr'],
   data () {
     return {
       dialog3: false,
-      markers: [
-        {
-          position: { lat: 39.7577, lng: -105.0070},
-        }
-      ]
     }
   },
   beforeMount() {
