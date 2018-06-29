@@ -88,14 +88,16 @@ export default {
 <style>
 
     #preview-card {
-        width: 500px;
-        height: 150px;
-        margin: 20px;
         margin-top: 70px;
+        margin-bottom: -70px;
     }
     #preview-card:hover {
         transform: scale(1.1);
         cursor: pointer;
+    }
+
+    #main-container > div.cards-container > div {
+        width: 80%;
     }
 
     #preview-card img {
