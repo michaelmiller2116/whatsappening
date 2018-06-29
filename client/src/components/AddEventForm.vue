@@ -6,12 +6,12 @@
                     :position="event.pins[0].position"
                     /> -->
                     <!-- v-if="this.place" -->
-                <GmapMarker
+                <!-- <GmapMarker
                     v-for="(event, index) in eventArr"
                     :key="index"
                     label="★"
                     :position="event.pins[index].position"
-                    />
+                    /> -->
                 <!-- <GmapMarker v-for="(marker, index) in markers"
                     :key="index"
                     :position="marker.position"
@@ -44,7 +44,7 @@
                     <v-flex xs12 sm6 md4 v-model="body.location">
                         Location
                         <GmapAutocomplete
-                         @place_changed="setPlace" @click="usePlace">
+                         @place_changed="setPlace">
                         </GmapAutocomplete>
                         <!-- <button @click="usePlace, setPlace">Confirm Location</button> -->
                     </v-flex>
@@ -73,7 +73,7 @@
                 <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                <v-btn @click="usePlace, setPlace, postEvent(body)" color="blue darken-1" flat @click.native="dialog = false" >Create Event</v-btn>
+                <v-btn @click="setPlace, postEvent(body)" color="blue darken-1" flat @click.native="dialog = false" >Create Event</v-btn>
                 </v-card-actions>
             </v-card>
             </v-dialog>
@@ -139,20 +139,20 @@ import API from '../API'
                     })
                 this.body.pins = this.markers
             },
-            usePlace(place) {
-                console.log('1');
+            // usePlace(place) {
+            //     console.log('1');
                 
-                if (this.place) {
-                    this.markers.push({
-                    position: {
-                        lat: this.place.geometry.location.lat(),
-                        lng: this.place.geometry.location.lng(),
-                    }
-                    })
-                    // this.place = null;
-                }
-                    // this.body.pins = ['hello']
-            },
+            //     if (this.place) {
+            //         this.markers.push({
+            //         position: {
+            //             lat: this.place.geometry.location.lat(),
+            //             lng: this.place.geometry.location.lng(),
+            //         }
+            //         })
+            //         // this.place = null;
+            //     }
+            //         // this.body.pins = ['hello']
+            // },
         },
     }
 </script>
