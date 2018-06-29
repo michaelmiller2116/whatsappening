@@ -2,7 +2,7 @@
   <div id="main-container">
     <div class="map-container">
       <h4>Events Near You</h4>
-      <gmap-map style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
+      <gmap-map style="width: 65vw; height: 75vh" :zoom="11" :center="{lat:39.7392, lng:-104.9903}">
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
         {{infoContent}}
       </gmap-info-window>
