@@ -123,6 +123,7 @@ export default {
   flex-wrap: wrap;
   margin-right: -17vh;
   overflow: auto;
+  padding-top: 30px;
 }
 </style>
 
