@@ -19,7 +19,7 @@
                     <v-flex xs12 sm6 md4 v-model="body.location">
                         Location*
                         <GmapAutocomplete
-                         @place_changed="setPlace">
+                            @place_changed="setPlace">
                         </GmapAutocomplete>
                     </v-flex>
                     <v-flex xs12 sm6 md4>

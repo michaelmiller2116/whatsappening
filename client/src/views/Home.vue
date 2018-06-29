@@ -2,12 +2,27 @@
   <div id="main-container">
     <div class="map-container">
       <h4>Events Near You</h4>
-      <GmapMap style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
+      <!-- <GmapMap style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
               <GmapMarker v-for="(event, index) in eventArr"
               :key="index"
               :position="event.location.geometry.location"
               />
-      </GmapMap>
+              
+              <gmap-info-window v-for="(event, index) in eventArr"
+              :key="index"
+              :options="infoOptions" 
+              :position="infoWindowPos" 
+              :opened="true" @closeclick="infoWinOpen=false"
+              >
+              </gmap-info-window>
+      </GmapMap> -->
+      <gmap-map style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
+      <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+        {{infoContent}}
+      </gmap-info-window>
+
+      <gmap-marker :key="i" v-for="(m,i) in eventArr" :position="m.location.geometry.location" :clickable="true" @click="toggleInfoWindow(m,i)"></gmap-marker>
+    </gmap-map>
     </div>
       <div>
       </div>    
@@ -16,6 +31,7 @@
         <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
       </div>
       <PreviewCards :getEvents="getEvents" :event="event" :key="event.id" v-for="event in eventArr"/>
+      <!-- <infoWindow>Info Window</infoWindow> -->
     </div>
   </div>
 </template>
@@ -34,17 +50,49 @@ export default {
     AddEventForm,
   },
   props: ['getEvents', 'eventArr'],
+
   data () {
     return {
       dialog3: false,
+      infoContent: "",
+      infoWindowPos: null,
+      infoWinOpen: false,
+      currentMidx: null,
+      //optional: offset infowindow so it visually sits nicely on top of our marker
+      infoOptions: {
+        pixelOffset: {
+          width: 0,
+          height: -35
+        }
+      },
     }
   },
-  beforeMount() {
-    this.getEvents();
-  },
+
+  mounted: function () {
+    this.getEvents () 
+  }, 
+
   methods: {
-  },
-};
+
+    // beforeMount() {
+    //   this.getEvents();
+    // },
+
+    toggleInfoWindow(marker, idx) {
+      this.infoWindowPos = marker.location.geometry.location;
+      this.infoContent = marker.title;
+      //check if its the same marker that was selected if yes toggle
+      if (this.currentMidx == idx) {
+        this.infoWinOpen = !this.infoWinOpen;
+      }
+      //if different marker set infowindow to open and reset current marker index
+      else {
+        this.infoWinOpen = true;
+        this.currentMidx = idx;
+      }
+    }
+  }
+}
 </script>
 
 <style>

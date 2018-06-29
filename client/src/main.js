@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import {GmapMarker} from 'vue2-google-maps/src/components/marker'
 import App from './App.vue'
 import router from './router'
 
@@ -27,11 +28,11 @@ Vue.use(VueGoogleMaps, {
   // autobindAllEvents: false,
 
   //// If you want to manually install components, e.g.
-  //// import {GmapMarker} from 'vue2-google-maps/src/components/marker'
-  //// Vue.component('GmapMarker', GmapMarker)
   //// then disable the following:
-  installComponents: true,
 })
+Vue.component('infoWindow', VueGoogleMaps.InfoWindow)
+Vue.component('GmapMarker', GmapMarker)
+installComponents: true,
 
 Vue.config.productionTip = false
 
