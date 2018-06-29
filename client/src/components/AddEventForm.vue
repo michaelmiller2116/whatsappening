@@ -123,7 +123,7 @@ import API from '../API'
                 headers: {
                 'content-type': 'application/json',
                 },
-                }).then(this.resetBody(), this.getEvents())
+                }).then(console.log(obj), this.resetBody(), this.getEvents())
             },
             setDescription(description) {
                 this.description = description;
