@@ -2,20 +2,6 @@
   <div id="main-container">
     <div class="map-container">
       <h4>Events Near You</h4>
-      <!-- <GmapMap style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
-              <GmapMarker v-for="(event, index) in eventArr"
-              :key="index"
-              :position="event.location.geometry.location"
-              />
-              
-              <gmap-info-window v-for="(event, index) in eventArr"
-              :key="index"
-              :options="infoOptions" 
-              :position="infoWindowPos" 
-              :opened="true" @closeclick="infoWinOpen=false"
-              >
-              </gmap-info-window>
-      </GmapMap> -->
       <gmap-map style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
         {{infoContent}}
@@ -30,8 +16,7 @@
       <div id="event-section">
         <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
       </div>
-      <PreviewCards :getEvents="getEvents" :event="event" :key="event.id" v-for="event in eventArr"/>
-      <!-- <infoWindow>Info Window</infoWindow> -->
+      <PreviewCards :getEvents="getEvents"  :toggleInfoWindow="toggleInfoWindow" :event="event" :key="event.id" v-for="event in eventArr"/>
     </div>
   </div>
 </template>
@@ -73,10 +58,9 @@ export default {
   }, 
 
   methods: {
-
     // beforeMount() {
-    //   this.getEvents();
-    // },
+    //   this.getEvents()
+    // }, 
 
     toggleInfoWindow(marker, idx) {
       this.infoWindowPos = marker.location.geometry.location;

@@ -6,7 +6,7 @@
                 <img :src="event.imageURL">
             </div>
             <div class="card-stacked">
-                <div class="card-content" @click="dialog3 = true, displaySelectedModal()">
+                <div class="card-content" @click="dialog3 = true, displaySelectedModal(), toggleInfoWindow(event)">
                 <h5 class="header">{{ event.title }}</h5>
                 <p>{{ event.location.name }}</p>
                 <p>{{ event.location.formatted_address }}</p>
@@ -55,7 +55,7 @@ import API from '../API.js';
 import EditEventForm from './EditEventForm'
 
 export default {
-    props: ['event', 'getEvents'],
+    props: ['event', 'getEvents', 'toggleInfoWindow'],
     data () {
         return {
             dialog3: false,
