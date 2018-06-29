@@ -1,6 +1,6 @@
 <template>
     <div class='new-event-form' data-app="true">
-        <GmapMap style="width: 600px; height: 300px;" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
+        <GmapMap style="width: 60vw; height: 60vh;" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
                 <!-- <GmapMarker v-for="(event, index) in eventArr"
                     :key="index"
                     :position="event.pins[0].position"

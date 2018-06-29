@@ -31,10 +31,10 @@
       <div>
       <!-- <LocationAutoComplete /> -->
       </div>    
+        <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
     <div class="cards-container">
       <div id="event-section">
         <h4>Events Near You</h4>
-        <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
       </div>
       <PreviewCards :getEvents="getEvents" :event="event" :key="event.id" v-for="event in eventArr"/>
     </div>
