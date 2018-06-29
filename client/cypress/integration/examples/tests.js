@@ -3,7 +3,7 @@ describe('Bridge The Fridge', function () {
   it('.should() - assert that <title> is correct', function () {
     cy.visit('https://whats-appening.firebaseapp.com/#/')
     
-    cy.get('#app > nav > div > img').should('have.attr', 'src', `logo2.png`)
+    cy.get('#app > nav > div > img').should('have.attr', 'src', `src/assets/logo2.png`)
 
 
     // cy.title().should('include', 'Bridge The Fridge')
