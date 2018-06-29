@@ -1,7 +1,7 @@
 <template>
   <div id="main-container">
     <div class="map-container">
-      <h4>You are here</h4>
+      <h4>Events Near You</h4>
       <GmapMap style="width: 65vw; height: 75vh" :zoom="12" :center="{lat:39.7392, lng:-104.9903}">
               <GmapMarker v-for="(event, index) in eventArr"
               :key="index"
@@ -13,7 +13,6 @@
       </div>    
     <div class="cards-container">
       <div id="event-section">
-        <h4>Events Near You</h4>
         <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
       </div>
       <PreviewCards :getEvents="getEvents" :event="event" :key="event.id" v-for="event in eventArr"/>

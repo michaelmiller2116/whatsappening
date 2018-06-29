@@ -17,9 +17,9 @@
                         <v-text-field v-model="body.category" label="Category" required></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm6 md4 v-model="body.location">
-                        Location
+                        Location*
                         <GmapAutocomplete
-                         @place_changed="setPlace" @click="usePlace">
+                         @place_changed="setPlace">
                         </GmapAutocomplete>
                     </v-flex>
                     <v-flex xs12 sm6 md4>
@@ -28,15 +28,15 @@
                     <v-flex xs12 sm6 md4>
                         <v-text-field v-model="body.time" label="Time" required></v-text-field>
                     </v-flex>
-                    <v-flex xs12 sm6s md6>
+                    <!-- <v-flex xs12 sm6s md6>
                         <v-text-field v-model="body.email" label="Email" required></v-text-field>
-                    </v-flex>
+                    </v-flex> -->
                     </v-layout>
                     <v-flex xs12>
-                        <v-text-field v-model="body.description" label="Description"></v-text-field>
+                        <v-text-field v-model="body.description" label="Description" required></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                        <v-text-field v-model="body.imageURL" label="Image URL"></v-text-field>
+                        <v-text-field v-model="body.imageURL" label="Image URL" required></v-text-field>
                     </v-flex>
                 </v-container>
                 <small>*indicates required field</small>
