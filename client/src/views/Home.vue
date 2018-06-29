@@ -1,7 +1,6 @@
 <template>
   <div id="main-container">
     <div class="map-container">
-      <h4>You are here</h4>
       <!-- <Map /> -->
       <!-- <GmapMap
         :center="{ lat:39.7392, lng:-104.9903 }"
@@ -31,7 +30,10 @@
       <div>
       <!-- <LocationAutoComplete /> -->
       </div>    
+      <div>
+        <h4 style="text-align: center">Your Area</h4>
         <AddEventForm :eventArr="eventArr" :getEvents="getEvents" />
+      </div>
     <div class="cards-container">
       <div id="event-section">
         <h4>Events Near You</h4>
