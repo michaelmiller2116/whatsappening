@@ -1,7 +1,8 @@
 <template>
   <nav>
     <div class="nav-wrapper indigo">
-      <a href="#" class="brand-logo left">What's Appening</a>
+      <!-- <a href="#" class="brand-logo left">What's Appening</a> -->
+      <img src="../assets/logo2.png" alt="">
     <div id="button-container" class="right">
       <!-- <a class="waves-effect waves-light orange darken-2 btn">Food &amp; Drink</a>
       <a class="waves-effect waves-light green darken-1 btn">Active</a> -->
