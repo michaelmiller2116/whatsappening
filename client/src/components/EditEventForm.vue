@@ -15,8 +15,11 @@
               <v-flex xs12>
                   <v-text-field v-model="event.category" label="Category" required></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="event.location" label="Location" required></v-text-field>
+             <v-flex xs12 sm6 md4 v-model="event.location">
+                  Location*
+                  <GmapAutocomplete
+                      @place_changed="setPlace">
+                  </GmapAutocomplete>
               </v-flex>
               <v-flex xs12 sm6 md4>
                   <v-text-field v-model="event.date" label="Date of Event" required></v-text-field>
@@ -40,7 +43,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
+          <v-btn @click="putEvent(event)" color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -54,17 +57,54 @@
 
     data: () => ({
       dialog: false,
-      body: {
-        title: "",
-        category: "",
-        date:"",
-        time: "",
-        location: "",
-        email: "",
-        description: "",
-        imageURL: "",
-      }
+      markers: [],
+      place: null,
+      // body: {
+      //   title: "",
+      //   category: "",
+      //   date:"",
+      //   time: "",
+      //   location: "",
+      //   email: "",
+      //   description: "",
+      //   imageURL: "",
+      // }
     }),
+    methods: {
+      // resetBody() {
+      //     this.body = {
+      //         title: "",
+      //         category: "",
+      //         date:"",
+      //         time: "",
+      //         location: {},
+      //         pins: [],
+      //         description: "",
+      //         imageURL: "",
+      //     }
+      // },
+      putEvent(obj) {
+          console.log(this.obj);
+          return fetch((`${API.API_URL}/${obj._id}`), {
+          method: 'POST',
+          body: JSON.stringify(obj),
+          headers: {
+          'content-type': 'application/json',
+          },
+          }).then(console.log(obj), this.getEvents())
+      },
+      setPlace(place) {
+          this.place = place
+          this.event.location = this.place
+          this.markers.push({
+              position: {
+                  lat: this.place.geometry.location.lat(),
+                  lng: this.place.geometry.location.lng(),
+              }
+              })
+          this.event.pins = this.markers
+      },
+    },
   }
 </script>
 
