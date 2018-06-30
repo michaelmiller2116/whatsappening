@@ -6,7 +6,6 @@
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
         {{ infoContent }}
       </gmap-info-window>
-
       <gmap-marker :key="i" v-for="(m,i) in eventArr" :position="m.location.geometry.location" :clickable="true" @click="toggleInfoWindow(m,i)"></gmap-marker>
     </gmap-map>
     </div>
@@ -22,7 +21,6 @@
 </template>
 
 <script>
-import Map from '@/components/Map';
 import PreviewCards from '@/components/PreviewCards';
 import AddEventForm from '@/components/AddEventForm';
 import API from '../API.js';
@@ -58,10 +56,6 @@ export default {
   }, 
 
   methods: {
-    // beforeMount() {
-    //   this.getEvents()
-    // }, 
-
     toggleInfoWindow(marker, idx) {
       this.infoWindowPos = marker.location.geometry.location;
       this.infoContent = marker.title;
@@ -81,33 +75,34 @@ export default {
 
 <style>
 
-#main-container {
-  width: 90%;
-  display: flex;
-}
-.map-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 3vh;
-}
+  #main-container {
+    width: 90%;
+    display: flex;
+  }
+  .map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 3vh;
+  }
 
-.card-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start ! important;
-}
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start ! important;
+  }
 
-.cards-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 90vh;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-right: -17vh;
-  overflow: auto;
-  padding-top: 30px;
-}
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 90vh;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-right: -17vh;
+    overflow: auto;
+    padding-top: 30px;
+  }
+
 </style>
 
