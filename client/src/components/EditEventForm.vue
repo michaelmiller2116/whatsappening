@@ -16,7 +16,7 @@
                   <v-text-field v-model="event.category" label="Category" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="event.location" label="Location" required></v-text-field>
+                  <v-text-field v-model="event.location.name" label="Location" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md4>
                   <v-text-field v-model="event.date" label="Date of Event" required></v-text-field>
