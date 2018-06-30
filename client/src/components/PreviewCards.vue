@@ -14,7 +14,7 @@
                     </v-card-title>
                 </div>
                 <v-card-actions class="card-action">
-                    <EditEventForm :event="event" />
+                    <EditEventForm :getEvents="getEvents" :event="event" />
                     <v-btn color="red" dark @click="deleteEvent(event)">Delete</v-btn>
                 </v-card-actions>
             </v-card>

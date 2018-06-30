@@ -27,9 +27,6 @@
               <v-flex xs12 sm6 md4>
                   <v-text-field v-model="event.time" label="Time" required></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6s md6>
-                  <v-text-field v-model="event.email" label="Email" required></v-text-field>
-              </v-flex>
               </v-layout>
               <v-flex xs12>
                   <v-text-field v-model="event.description" label="Description"></v-text-field>
@@ -43,7 +40,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-          <v-btn @click="putEvent(event)" color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
+          <v-btn @click="putEvent(event), getEvents()" color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -51,47 +48,26 @@
 </template>
 
 <script>
+import API from '../API.js';
   export default {
 
-    props: ["event"],
+    props: ['event', 'getEvents'],
 
     data: () => ({
       dialog: false,
       markers: [],
       place: null,
-      // body: {
-      //   title: "",
-      //   category: "",
-      //   date:"",
-      //   time: "",
-      //   location: "",
-      //   email: "",
-      //   description: "",
-      //   imageURL: "",
-      // }
     }),
     methods: {
-      // resetBody() {
-      //     this.body = {
-      //         title: "",
-      //         category: "",
-      //         date:"",
-      //         time: "",
-      //         location: {},
-      //         pins: [],
-      //         description: "",
-      //         imageURL: "",
-      //     }
-      // },
       putEvent(obj) {
-          console.log(this.obj);
-          return fetch((`${API.API_URL}/${obj._id}`), {
-          method: 'POST',
-          body: JSON.stringify(obj),
-          headers: {
-          'content-type': 'application/json',
-          },
-          }).then(console.log(obj), this.getEvents())
+        obj.email = "N/A"
+        return fetch((`${API.API_URL}/${this.event._id}`), {
+        method: 'PUT',
+        body: JSON.stringify(obj),
+        headers: {
+        'content-type': 'application/json',
+        },
+        }).then(this.getEvents())
       },
       setPlace(place) {
           this.place = place
