@@ -31,8 +31,7 @@
                     <h6>{{ selectedEvent.description }}</h6>
                     <h6>{{ event.location.name}}</h6>
                     <a :href="event.location.url" target="_blank">
-                        <div>{{`${event.location.address_components[1].long_name} ${event.location.address_components[2].long_name}` }}</div>
-                        <p>{{ `${event.location.address_components[3].long_name}, ${event.location.address_components[5].short_name} ${event.location.address_components[7].short_name}` }}</p>
+                        <div>{{ event.location.formatted_address }}</div>
                     </a>
                     <div>{{ event.location.formatted_phone_number }}</div>
                     <br>
