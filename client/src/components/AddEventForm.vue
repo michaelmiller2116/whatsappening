@@ -2,7 +2,7 @@
     <div class='new-event-form' data-app="true">
         <v-layout row justify-left>
             <v-dialog v-model="dialog" persistent max-width="500px" >
-            <v-btn slot="activator" color="primary" dark>Add a new event</v-btn>
+            <v-btn slot="activator" color="green darken-1" dark>Add a new event</v-btn>
             <v-card>
                 <v-card-title>
                 <span class="headline">New Event</span>

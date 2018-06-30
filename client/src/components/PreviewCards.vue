@@ -1,27 +1,23 @@
 <template>
     <div data-app="true">
         <div :ref="event" id="preview-card" class="col s12 m7">
-            <div class="card horizontal">
-            <div class="card-image">
-                <img :src="event.imageURL">
-            </div>
-            <div class="card-stacked">
-                <div class="card-content" @click="dialog3 = true, displaySelectedModal(), toggleInfoWindow(event)">
-                <h5 class="header">{{ event.title }}</h5>
-                <p>{{ event.location.name }}</p>
-                <p>{{ event.location.formatted_address }}</p>
-                <p>{{ event.location.formatted_phone_number }}</p>
-                <a 
-                href="https://maps.google.com/?q=1701+Bryant+St,+Denver,+CO+80204,+USA&ftid=0x876c78baa82ea2b5:0xb08dbf533f1158f9">
-                Directions
-                </a>
+            <v-card>
+                <div @click="dialog3 = true, displaySelectedModal(), toggleInfoWindow(event)">
+                    <v-card-media :src="event.imageURL" height="200px"></v-card-media>
+                    <v-card-title primary-title>
+                    <div>
+                        <h3 class="headline mb-0">{{ event.title }}</h3>
+                        <div>{{`${event.date} @ ${event.time}`}}</div>
+                        <div>{{ event.location.name }}</div>
+                        <a :href="event.location.url" target="_blank">Map It</a>
+                    </div>
+                    </v-card-title>
                 </div>
-                <div class="card-action">
+                <v-card-actions class="card-action">
                     <EditEventForm :event="event" />
-                    <v-btn color="warning" dark @click="deleteEvent(event)">Delete</v-btn>
-                </div>
-            </div>
-            </div>
+                    <v-btn color="red" dark @click="deleteEvent(event)">Delete</v-btn>
+                </v-card-actions>
+            </v-card>
         </div>
         <v-layout row justify-center>
             <v-dialog v-model="dialog3" max-width="60%">
@@ -30,14 +26,18 @@
                     <div class="image-container">
                         <img class="modal-image" :src="selectedEvent.imageURL">
                     </div>
-                    <h1>{{ selectedEvent.title }}</h1>
-                    <strong>{{ selectedEvent.date }}</strong>
+                    <h3>{{ event.title }}</h3>
+                    <strong>{{`${event.date} @ ${event.time}`}}</strong>
+                    <h6>{{ selectedEvent.description }}</h6>
+                    <h6>{{ event.location.name}}</h6>
+                    <a :href="event.location.url" target="_blank">
+                        <div>{{`${event.location.address_components[1].long_name} ${event.location.address_components[2].long_name}` }}</div>
+                        <p>{{ `${event.location.address_components[3].long_name}, ${event.location.address_components[5].short_name} ${event.location.address_components[7].short_name}` }}</p>
+                    </a>
+                    <div>{{ event.location.formatted_phone_number }}</div>
+                    <br>
+                    <p>Posted By: Fion Wan <small>(⭐ Denver user)</small></p>
                     <v-spacer></v-spacer>
-                    <p>Here</p>
-                    <v-spacer></v-spacer>
-                    <v-spacer></v-spacer>
-                    <strong>{{ selectedEvent.description }}</strong>
-                    <p>Contact Establishment: {{ selectedEvent.email }}</p>
                     <v-spacer></v-spacer>
                     </v-card-title>
                     <v-card-actions>
@@ -47,7 +47,6 @@
             </v-dialog>
         </v-layout>
     </div>
-
 </template>
 
 <script>
@@ -60,6 +59,7 @@ export default {
         return {
             dialog3: false,
             selectedEvent: Object,
+            upvotes: Array,
         }
     },
 
@@ -103,6 +103,9 @@ export default {
     #preview-card img {
         width: 150px;
         height: 165px;
+    }
+    #preview-card h3 {
+        margin-top: 0;
     }
     .card-action {
         display: flex;
