@@ -39,8 +39,8 @@
                     <v-spacer></v-spacer>
                     <v-spacer></v-spacer>
                     </v-card-title>
-                    <v-card-actions>
-                    <v-btn color="black" flat @click="dialog3=false">Close</v-btn>
+                    <v-card-actions class="close-card">
+                        <v-btn color="black" flat @click="dialog3=false">Close</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -124,6 +124,11 @@ export default {
     .modal-image {
         width: 500px;
         height: 300px;
+    }
+
+    .close-card {
+        display: flex;
+        flex-direction: row-reverse;
     }
 
 </style>
