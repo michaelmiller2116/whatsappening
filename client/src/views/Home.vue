@@ -4,7 +4,7 @@
       <h4>Events Near You</h4>
       <gmap-map style="width: 65vw; height: 75vh" :zoom="11" :center="{lat:39.7392, lng:-104.9903}">
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
-        {{infoContent}}
+        {{ infoContent }}
       </gmap-info-window>
 
       <gmap-marker :key="i" v-for="(m,i) in eventArr" :position="m.location.geometry.location" :clickable="true" @click="toggleInfoWindow(m,i)"></gmap-marker>
@@ -43,7 +43,7 @@ export default {
       infoWindowPos: null,
       infoWinOpen: false,
       currentMidx: null,
-      //optional: offset infowindow so it visually sits nicely on top of our marker
+      //optional: positions info box on top of map marker
       infoOptions: {
         pixelOffset: {
           width: 0,

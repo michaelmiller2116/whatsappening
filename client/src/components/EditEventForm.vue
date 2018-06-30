@@ -1,7 +1,7 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="500px">
-      <v-btn slot="activator" color="primary" dark>Edit</v-btn>
+      <v-btn slot="activator" color="blue" dark>Edit</v-btn>
       <v-card>
         <v-card-title>
           <span class="headline">Edit Event</span>
@@ -15,9 +15,9 @@
               <v-flex xs12>
                   <v-text-field v-model="event.category" label="Category" required></v-text-field>
               </v-flex>
-             <v-flex xs12 sm6 md4 v-model="event.location">
+             <v-flex xs12 sm6 md4>
                   Location*
-                  <GmapAutocomplete
+                  <GmapAutocomplete v-model="event.location.name"
                       @place_changed="setPlace">
                   </GmapAutocomplete>
               </v-flex>
