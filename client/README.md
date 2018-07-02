@@ -12,3 +12,9 @@
 
 ### Post an Event
 ![Post Event](https://user-images.githubusercontent.com/33434059/42129755-7eeaa4fa-7c8b-11e8-95f4-bbb0daeed839.gif)
+
+
+
+
+### Edit or Delete an Event
+![Edit/Delete](https://user-images.githubusercontent.com/33434059/42168071-2e922698-7dcd-11e8-9341-835d12216227.gif)
