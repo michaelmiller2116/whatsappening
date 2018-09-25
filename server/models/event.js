@@ -3,12 +3,13 @@ const mongoose = require('mongoose')
 const EventSchema = new mongoose.Schema({
     title: String,
     category: String,
-    location: String,
+    location: Object,
     date: String,
     time: String,
     description: String,
     imageURL: String,
     email: String,
+    pins: Array,
     upvotes: Number
 })
 
